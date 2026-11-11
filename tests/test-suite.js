@@ -11,6 +11,7 @@ import { StorageService } from '../js/services/storage.js';
 import { AnalyticsService } from '../js/services/analytics.js';
 import { VoiceRecorderService } from '../js/services/voice-recorder.js';
 import { NavigationManager } from '../js/chat/navigation.js';
+import { FLOW_CONFIG, resolveAuthorizedFlow, isDevEnvironment } from '../js/config/flow-config.js';
 import { t } from '../js/i18n.js';
 
 export async function runAllTests() {
@@ -431,6 +432,67 @@ export async function runAllTests() {
     assert(brl.includes('197') && brl.includes('BRL'), '[UI] formatCurrency formata BRL com símbolo R$');
   } catch (e) {
     assert(false, `[UI] formatCurrency falhou: ${e.message}`);
+  }
+
+  // ==========================================
+  // CATEGORIA 7: POLÍTICA CENTRALIZADA DE FLUXOS & SEGURANÇA (AUDIT)
+  // ==========================================
+
+  // Test 31: Centralized public flow policy configuration
+  try {
+    assert(FLOW_CONFIG.PUBLIC_PRODUCT_SLUG === 'cocina-inteligente', '[Política de Fluxo] Fluxo principal público explicitamente definido como cocina-inteligente');
+    assert(FLOW_CONFIG.PUBLIC_DEFAULT_ENTRY === 'welcome_1', '[Política de Fluxo] Nó de entrada padrão explicitamente definido como welcome_1');
+    assert(FLOW_CONFIG.ALLOW_ARBITRARY_FLOW_OVERRIDE === false, '[Política de Fluxo] Sobrescrita arbitrária de fluxo travada em falso para produção');
+  } catch (e) {
+    assert(false, `[Política de Fluxo] Configuração centralizada falhou: ${e.message}`);
+  }
+
+  // Test 32: Arbitrary URL product override rejection in production
+  try {
+    const mockProdLocation = { hostname: 'samuel.github.io', search: '?product=produtividade-ninja' };
+    const authProd = resolveAuthorizedFlow('?product=produtividade-ninja', mockProdLocation);
+    assert(authProd.productSlug === 'cocina-inteligente', '[Segurança de URL] Rejeita troca arbitrária de produto em ambiente público de produção');
+    assert(authProd.isPreviewMode === false, '[Segurança de URL] Modo de pré-visualização permanece desativado');
+  } catch (e) {
+    assert(false, `[Segurança de URL] Rejeição de produto arbitrário falhou: ${e.message}`);
+  }
+
+  // Test 33: Arbitrary entry node injection rejection in production
+  try {
+    const mockProdLocation = { hostname: 'samuel.github.io', search: '?entry=ninja_checkout_pro' };
+    const authEntry = resolveAuthorizedFlow('?entry=ninja_checkout_pro', mockProdLocation);
+    assert(authEntry.entryNode === 'welcome_1', '[Segurança de URL] Rejeita injeção arbitrária de nó de entrada em produção');
+  } catch (e) {
+    assert(false, `[Segurança de URL] Rejeição de nó de entrada arbitrário falhou: ${e.message}`);
+  }
+
+  // Test 34: Controlled developer preview with authorized token
+  try {
+    const mockProdLocation = { hostname: 'samuel.github.io', search: '?product=produtividade-ninja&preview_token=preview_dev_mode' };
+    const authDev = resolveAuthorizedFlow('?product=produtividade-ninja&preview_token=preview_dev_mode', mockProdLocation);
+    assert(authDev.productSlug === 'produtividade-ninja', '[Dev/Preview] Libera produto alternativo quando token de pré-visualização autorizado é fornecido');
+    assert(authDev.isPreviewMode === true, '[Dev/Preview] Ativa flag isPreviewMode sob autorização');
+  } catch (e) {
+    assert(false, `[Dev/Preview] Autorização de pré-visualização falhou: ${e.message}`);
+  }
+
+  // Test 35: Backup Import Hardening - Rejects Invalid Product Inside data.products
+  try {
+    const storage = new StorageService('test_import_hardening');
+    const maliciousBackup = JSON.stringify({
+      products: {
+        'usc_v1_test_product_data_malicious': {
+          slug: 'malicious',
+          // Missing flows, branding, name, etc.
+          broken: true
+        }
+      }
+    });
+    const res = storage.importBackup(maliciousBackup);
+    assert(res.success === true, '[Segurança de Dados] importBackup() processa estrutura válida');
+    assert(res.count === 0, '[Segurança de Dados] importBackup() descarta produto malformado dentro de data.products');
+  } catch (e) {
+    assert(false, `[Segurança de Dados] Blindagem de importação falhou: ${e.message}`);
   }
 
   console.log(`--- Test Suite Concluída: ${passed} Passando, ${failed} Falhas (Total: ${passed + failed}) ---`);

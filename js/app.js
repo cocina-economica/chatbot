@@ -3,7 +3,8 @@
  * Resolves product from URL slug, binds modular services, and launches conversation.
  */
 
-import { getProductSlugFromUrl, getUrlParam } from './utils/helpers.js';
+import { getUrlParam } from './utils/helpers.js';
+import { resolveAuthorizedFlow, FLOW_CONFIG } from './config/flow-config.js';
 import { StorageService } from './services/storage.js';
 import { AnalyticsService } from './services/analytics.js';
 import { CheckoutService } from './services/checkout.js';
@@ -17,14 +18,17 @@ import { t } from './i18n.js';
 
 class App {
   constructor() {
-    this.productSlug = getProductSlugFromUrl('cocina-inteligente');
+    // Resolve authorized product flow using centralized security policy
+    const flowAuth = resolveAuthorizedFlow();
+    this.productSlug = flowAuth.productSlug;
+    this.authorizedEntryNode = flowAuth.entryNode;
+    this.isPreviewMode = flowAuth.isPreviewMode;
+
     this.storage = new StorageService(this.productSlug);
     this.analytics = new AnalyticsService(this.productSlug);
     this.sound = new SoundService();
     this.voiceRecorder = new VoiceRecorderService({ maxDurationSeconds: 60 });
     this.engine = null;
-    this.avatarClickCount = 0;
-    this.avatarClickTimer = null;
   }
 
   async init() {
@@ -54,25 +58,31 @@ class App {
       const targetOfferId = getUrlParam('offer') || getUrlParam('off');
       const isDirectMode = getUrlParam('direct') === 'true' || getUrlParam('direto') === 'true';
       const isSingleMode = getUrlParam('single') === 'true' || getUrlParam('only') === 'true';
-      const customEntryNode = getUrlParam('entry') || getUrlParam('flow');
       const disableAutoFs = getUrlParam('nofs') === 'true';
 
-      if (targetOfferId) {
-        navigation.updateUserState('targetOfferId', targetOfferId);
+      // Validate that targetOfferId actually belongs to this authorized product
+      const validOffer = (config.offers || []).find(o => o.id === targetOfferId);
+
+      if (validOffer) {
+        navigation.updateUserState('targetOfferId', validOffer.id);
       }
-      if (isSingleMode) {
+      if (isSingleMode && validOffer) {
         navigation.updateUserState('isSingleMode', true);
       }
 
-      if (isDirectMode && targetOfferId) {
-        // Direct mode: find the offer node or checkout node to jump directly to the chosen offer
+      if (isDirectMode && validOffer) {
+        // Direct mode: jump directly to the authorized offer node
         const flows = config.flows || {};
         const offerNode = Object.values(flows).find(n => n.type === 'offer');
         if (offerNode) {
           config.flow_entry = offerNode.id;
         }
-      } else if (customEntryNode && config.flows && config.flows[customEntryNode]) {
-        config.flow_entry = customEntryNode;
+      } else if (this.isPreviewMode && this.authorizedEntryNode && config.flows && config.flows[this.authorizedEntryNode]) {
+        // Authorized developer preview mode only
+        config.flow_entry = this.authorizedEntryNode;
+      } else {
+        // Production: Strictly locked to the centralized default entry node
+        config.flow_entry = FLOW_CONFIG.PUBLIC_DEFAULT_ENTRY;
       }
 
       const interactions = new InteractionManager({
@@ -169,23 +179,6 @@ class App {
         window.addEventListener('touchstart', enterFullscreenOnFirstGesture, { once: true, passive: true });
       }
 
-      // Hidden Stealth Access to Admin: Click avatar 5 times quickly
-      if (avatarImg) {
-        avatarImg.style.cursor = 'pointer';
-        avatarImg.addEventListener('click', () => {
-          this.avatarClickCount++;
-          clearTimeout(this.avatarClickTimer);
-          this.avatarClickTimer = setTimeout(() => {
-            this.avatarClickCount = 0;
-          }, 2000);
-
-          if (this.avatarClickCount >= 5) {
-            this.avatarClickCount = 0;
-            window.location.href = `admin.html?product=${this.productSlug}`;
-          }
-        });
-      }
-
       await this.engine.start(false);
     } catch (err) {
       console.error('[App] Failed to initialize sales chat:', err);
@@ -195,8 +188,7 @@ class App {
           <div class="chat-bubble-row bot-row">
             <div class="chat-bubble bot-bubble">
               <p><strong>Error al cargar el producto.</strong></p>
-              <p>Verifica que el archivo de configuración exista o regresa al producto principal.</p>
-              <p><a href="index.html?product=cocina-inteligente" class="btn-tier-select" style="display:inline-block; margin-top:8px;">Cargar Cocina Inteligente</a></p>
+              <p>Verifica la conexión a los archivos de configuración.</p>
             </div>
           </div>
         `;
@@ -205,24 +197,30 @@ class App {
   }
 
   async loadProductConfig(slug) {
-    // 1. Try LocalStorage for custom/edited version
-    const cached = this.storage.loadCustomProduct(slug);
-    if (cached) {
-      return cached;
-    }
-
-    // 2. Fetch from static JSON file
-    try {
-      const res = await fetch(`data/products/${slug}.json`);
-      if (res.ok) {
-        return await res.json();
+    // In production, strictly load the authoritative static JSON file from repository
+    // to prevent local browser draft tampering from hijacking the public experience
+    if (!this.isPreviewMode) {
+      try {
+        const res = await fetch(`data/products/${slug}.json`);
+        if (res.ok) {
+          return await res.json();
+        }
+      } catch (e) {
+        console.warn(`[App] Failed to load data/products/${slug}.json:`, e);
       }
-    } catch (e) {
-      console.warn(`[App] Failed to load data/products/${slug}.json:`, e);
+    } else {
+      // In dev / preview mode, allow custom draft from localStorage
+      const cached = this.storage.loadCustomProduct(slug);
+      if (cached) return cached;
+
+      try {
+        const res = await fetch(`data/products/${slug}.json`);
+        if (res.ok) return await res.json();
+      } catch (e) {}
     }
 
-    // 3. Fallback to default product
-    const fallbackRes = await fetch('data/products/cocina-inteligente.json');
+    // Fallback to default product static JSON
+    const fallbackRes = await fetch(`data/products/${FLOW_CONFIG.PUBLIC_PRODUCT_SLUG}.json`);
     if (!fallbackRes.ok) {
       throw new Error('Default product configuration could not be loaded.');
     }

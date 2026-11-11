@@ -144,12 +144,22 @@ export class StorageService {
       }
 
       if (data.products && typeof data.products === 'object') {
+        let importedCount = 0;
         for (const [key, value] of Object.entries(data.products)) {
-          if (key.startsWith(STORAGE_PREFIX)) {
+          if (typeof key === 'string' && key.startsWith(STORAGE_PREFIX)) {
+            // Validate product config integrity if key stores product data
+            if (key.includes('product_data_') && value && typeof value === 'object') {
+              const check = validateProductConfig(value);
+              if (!check.valid) {
+                console.warn(`[StorageService] Skipping invalid product in backup (${key}):`, check.errors);
+                continue;
+              }
+            }
             localStorage.setItem(key, JSON.stringify(value));
+            importedCount++;
           }
         }
-        return { success: true, count: Object.keys(data.products).length };
+        return { success: true, count: importedCount };
       }
 
       // Check if it's a single product JSON export
