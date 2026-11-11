@@ -1,0 +1,28 @@
+{
+  "defaultProduct": "cocina-inteligente",
+  "systemLanguages": [
+    { "code": "pt-BR", "name": "Português (Brasil)" },
+    { "code": "es-MX", "name": "Español (México)" },
+    { "code": "en-US", "name": "English (US)" }
+  ],
+  "products": [
+    {
+      "slug": "cocina-inteligente",
+      "name": "Cocina Inteligente",
+      "description": "100 comidas económicas para toda la familia",
+      "language": "es-MX",
+      "currency": "MXN",
+      "configFile": "data/products/cocina-inteligente.json",
+      "active": true
+    },
+    {
+      "slug": "produtividade-ninja",
+      "name": "Produtividade Ninja",
+      "description": "Método definitivo de gestão de tempo e foco para profissionais",
+      "language": "pt-BR",
+      "currency": "BRL",
+      "configFile": "data/products/produtividade-ninja.json",
+      "active": true
+    }
+  ]
+}

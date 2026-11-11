@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" width="300" height="200">
+  <defs>
+    <linearGradient id="listGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284C7" />
+      <stop offset="100%" stop-color="#0369A1" />
+    </linearGradient>
+  </defs>
+  <rect x="10" y="10" width="280" height="180" rx="12" fill="url(#listGrad)" />
+  <rect x="35" y="30" width="230" height="140" rx="8" fill="#FFFFFF" />
+  
+  <rect x="50" y="45" width="12" height="12" rx="3" fill="#0284C7" />
+  <line x1="72" y1="51" x2="240" y2="51" stroke="#0F172A" stroke-width="3" stroke-linecap="round" />
+  
+  <rect x="50" y="70" width="12" height="12" rx="3" fill="#0284C7" />
+  <line x1="72" y1="76" x2="210" y2="76" stroke="#0F172A" stroke-width="3" stroke-linecap="round" />
+  
+  <rect x="50" y="95" width="12" height="12" rx="3" fill="#0284C7" />
+  <line x1="72" y1="101" x2="230" y2="101" stroke="#0F172A" stroke-width="3" stroke-linecap="round" />
+
+  <rect x="50" y="120" width="12" height="12" rx="3" fill="#0284C7" />
+  <line x1="72" y1="126" x2="180" y2="126" stroke="#0F172A" stroke-width="3" stroke-linecap="round" />
+
+  <text x="150" y="156" font-family="system-ui, sans-serif" font-weight="800" font-size="12" fill="#0284C7" text-anchor="middle">LISTA DE COMPRAS INTELIGENTE</text>
+</svg>

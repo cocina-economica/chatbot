@@ -1,0 +1,56 @@
+{
+  "version": "1.0.0",
+  "appId": "chat-vendas-cocina",
+  "brand": {
+    "name": "Cocina Inteligente",
+    "tagline": "100 comidas económicas para toda la familia",
+    "logo": "assets/images/logo.svg"
+  },
+  "agent": {
+    "name": "Valentina",
+    "role": "Asesora Culinaria",
+    "status": "En línea ahora",
+    "avatar": "assets/images/avatar.svg",
+    "description": "Te ayudo a ahorrar tiempo y dinero en la cocina familiar"
+  },
+  "language": {
+    "default": "es-MX",
+    "supported": [
+      { "code": "es-MX", "name": "Español (México)" },
+      { "code": "pt-BR", "name": "Português (Brasil)" },
+      { "code": "en-US", "name": "English (US)" }
+    ]
+  },
+  "theme": {
+    "primaryColor": "#E65100",
+    "primaryHover": "#BF360C",
+    "secondaryColor": "#15803D",
+    "accentColor": "#F59E0B",
+    "bgBody": "#F8FAFC",
+    "bgChat": "#FFFFFF",
+    "botBubbleBg": "#F1F5F9",
+    "botBubbleText": "#0F172A",
+    "userBubbleBg": "#E65100",
+    "userBubbleText": "#FFFFFF",
+    "fontFamily": "system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+    "borderRadius": "16px"
+  },
+  "messages": {
+    "welcomeNode": "welcome_1",
+    "fallbackResponse": "Entendido. Para orientarte mejor y no hacerte perder tiempo, elige una de las opciones que preparé para ti aquí abajo:",
+    "inputPlaceholder": "Escribe tu mensaje o selecciona una opción...",
+    "sendButtonAria": "Enviar mensaje",
+    "restartButtonLabel": "Reiniciar",
+    "typingText": "Valentina está escribiendo...",
+    "errorNodeNotFound": "Lo sentimos, hubo un salto no disponible en este paso. Vamos a regresar al menú principal.",
+    "footerNotice": "Atención guiada automatizada • Pagos 100% seguros vía Hotmart"
+  },
+  "settings": {
+    "enableTypingIndicator": true,
+    "defaultTypingDelayMs": 650,
+    "enableSound": false,
+    "persistHistory": true,
+    "allowFreeTextInput": true,
+    "showRestartButton": true
+  }
+}

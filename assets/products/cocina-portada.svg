@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 520" width="400" height="520">
+  <defs>
+    <linearGradient id="coverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E65100" />
+      <stop offset="60%" stop-color="#C2410C" />
+      <stop offset="100%" stop-color="#7C2D12" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.25" />
+    </filter>
+  </defs>
+  <!-- Book spine & body -->
+  <rect x="25" y="20" width="350" height="480" rx="14" fill="url(#coverGrad)" filter="url(#shadow)" />
+  <!-- Book Spine highlight -->
+  <line x1="45" y1="20" x2="45" y2="500" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="3" />
+  
+  <!-- Ribbon / Tag -->
+  <rect x="50" y="45" width="160" height="28" rx="6" fill="#F59E0B" />
+  <text x="130" y="64" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="12" fill="#78350F" text-anchor="middle" letter-spacing="1">100% PRÁCTICO</text>
+  
+  <!-- Main Title -->
+  <text x="60" y="130" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="34" fill="#FFFFFF">COCINA</text>
+  <text x="60" y="170" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="34" fill="#FEF08A">INTELIGENTE</text>
+  
+  <line x1="60" y1="188" x2="340" y2="188" stroke="#FED7AA" stroke-width="2" />
+  
+  <!-- Subtitle -->
+  <text x="60" y="215" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="16" fill="#FFEDD5">100 comidas económicas</text>
+  <text x="60" y="238" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="16" fill="#FFEDD5">para toda la familia</text>
+  
+  <!-- Graphic pot/skillet -->
+  <circle cx="200" cy="330" r="75" fill="#FFFFFF" fill-opacity="0.12" />
+  <ellipse cx="200" cy="340" rx="55" ry="25" fill="#431407" />
+  <path d="M145 340 Q200 375 255 340 L250 325 Q200 355 150 325 Z" fill="#E65100" />
+  <path d="M255 335 L285 325 L280 315 L250 325 Z" fill="#78350F" />
+  <!-- Steam waves -->
+  <path d="M185 305 Q190 290 185 275" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.7" />
+  <path d="M200 300 Q205 285 200 270" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8" />
+  <path d="M215 305 Q220 290 215 275" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.7" />
+  
+  <!-- Badge Footer -->
+  <rect x="50" y="430" width="300" height="46" rx="10" fill="#FFFFFF" fill-opacity="0.18" />
+  <text x="200" y="458" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="13" fill="#FFFFFF" text-anchor="middle">RECETAS MEXICANAS • RÁPIDAS • NUTRITIVAS</text>
+</svg>

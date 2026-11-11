@@ -1,0 +1,505 @@
+{
+  "id": "prod_cocina_inteligente",
+  "slug": "cocina-inteligente",
+  "name": "Cocina Inteligente",
+  "description": "100 comidas económicas para toda la familia",
+  "language": "es-MX",
+  "currency": "MXN",
+  "currencySymbol": "$",
+  "timezone": "America/Mexico_City",
+  "active": true,
+  "branding": {
+    "name": "Cocina Inteligente",
+    "tagline": "100 comidas económicas para toda la familia",
+    "logo": "assets/images/logo.svg"
+  },
+  "theme": {
+    "primaryColor": "#0084FF",
+    "primaryHover": "#0073E6",
+    "secondaryColor": "#0084FF",
+    "accentColor": "#00C6FF",
+    "bgBody": "#F0F2F5",
+    "bgChat": "#FFFFFF",
+    "botBubbleBg": "#E4E6EB",
+    "botBubbleText": "#050505",
+    "userBubbleBg": "#0084FF",
+    "userBubbleText": "#FFFFFF",
+    "headerBg": "#FFFFFF",
+    "headerText": "#050505",
+    "fontFamily": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+    "borderRadius": "18px"
+  },
+  "avatar": {
+    "name": "Valentina",
+    "role": "Página Oficial • Ativo(a) agora",
+    "status": "En línea en Messenger",
+    "image": "assets/images/avatar-cocina.svg",
+    "description": "Página de Cocina Inteligente • Recetas familiares y ahorro diario"
+  },
+  "welcome_message": "¡Hola! Qué gusto saludarte. Soy Valentina, asesora culinaria de **Cocina Inteligente** 🍳✨",
+  "flow_entry": "welcome_1",
+  "settings": {
+    "enableTypingIndicator": true,
+    "defaultTypingDelayMs": 600,
+    "allowFreeTextInput": true,
+    "persistHistory": true,
+    "showRestartButton": true,
+    "fallbackResponse": "Entendido. Como soy un asistente guiado, puedo ayudarte mejor si seleccionas una de las opciones disponibles aquí abajo 👇"
+  },
+  "checkout": {
+    "adapter": "hotmart",
+    "defaultTrackingParam": "sck",
+    "defaultTrackingValue": "chat_sales",
+    "openInNewTab": true
+  },
+  "products": [
+    {
+      "id": "cocina-inteligente-ebook",
+      "name": "Cocina Inteligente: 100 comidas económicas para toda la familia",
+      "format": "Descarga Digital Inmediata (PDF interactivo)",
+      "coverImage": "assets/products/cocina-portada.svg",
+      "description": "El recetario pensado para familias que desean comer rico, balanceado y variado sin gastar una fortuna en el mercado.",
+      "highlights": [
+        "100 recetas completas con ingredientes económicos y fáciles de conseguir",
+        "Costos promedio calculados por porción familiar (4 a 6 personas)",
+        "Tiempos de preparación prácticos de 20 a 40 minutos",
+        "Secciones para desayunos, sopas, platos fuertes con pollo, res, verduras y cenas ligeras",
+        "Apto para principiantes y personas ocupadas"
+      ],
+      "sampleFile": {
+        "title": "Muestra Gratuita: 5 Recetas Económicas",
+        "description": "Prueba hoy mismo 5 recetas seleccionadas del libro sin ningún costo.",
+        "url": "assets/products/muestra-5-recetas.svg",
+        "badge": "PDF Gratuito"
+      }
+    }
+  ],
+  "bonuses": [
+    {
+      "id": "bono-menu-30",
+      "title": "Bono 1: Menú Planificado de 30 Días",
+      "valueText": "$150 MXN (Incluido Gratis)",
+      "description": "Calendario mensual organizado semana a semana para no volver a preguntarte '¿qué cocino hoy?'.",
+      "image": "assets/products/menu-30-dias.svg"
+    },
+    {
+      "id": "bono-lista-compras",
+      "title": "Bono 2: Lista de Compras Inteligente",
+      "valueText": "$100 MXN (Incluido Gratis)",
+      "description": "Plantilla para ir al súper o mercado con cantidades exactas y evitar desperdicios.",
+      "image": "assets/products/lista-compras.svg"
+    },
+    {
+      "id": "bono-sustituciones",
+      "title": "Bono 3: Guía de Sustituciones Anticrisis",
+      "valueText": "$120 MXN (Incluido Gratis)",
+      "description": "Aprende a sustituir ingredientes caros por alternativas accesibles sin perder sabor.",
+      "image": "assets/products/guia-sustitutos.svg"
+    }
+  ],
+  "offers": [
+    {
+      "id": "tier-basico",
+      "name": "Paquete Esencial",
+      "badge": "Inicio Rápido",
+      "price": 197,
+      "originalPrice": 197,
+      "currency": "MXN",
+      "isPopular": false,
+      "description": "Ideal si buscas ideas frescas y económicas para tu cocina diaria.",
+      "features": [
+        "Ebook digital 'Cocina Inteligente' con 100 recetas",
+        "Formato PDF interactivo para celular, tablet o PC",
+        "Acceso inmediato y de por vida",
+        "Garantía de satisfacción por 7 días"
+      ],
+      "checkoutUrl": "https://pay.hotmart.com/DEMO-COCINA-BASIC?off=basico"
+    },
+    {
+      "id": "tier-completo",
+      "name": "Paquete Completo Recomendado",
+      "badge": "Más Elegido",
+      "price": 297,
+      "originalPrice": 297,
+      "currency": "MXN",
+      "isPopular": true,
+      "description": "El paquete integral con todas las herramientas de planificación para el máximo ahorro.",
+      "features": [
+        "Ebook digital 'Cocina Inteligente' con 100 recetas",
+        "Bono 1: Menú Planificado de 30 Días (PDF imprimible)",
+        "Bono 2: Lista de Compras Inteligente",
+        "Acceso ilimitado a futuras actualizaciones",
+        "Garantía incondicional de 7 días"
+      ],
+      "checkoutUrl": "https://pay.hotmart.com/DEMO-COCINA-PRO?off=completo"
+    },
+    {
+      "id": "tier-vip",
+      "name": "Paquete VIP Familiar",
+      "badge": "Mayor Ahorro",
+      "price": 397,
+      "originalPrice": 397,
+      "currency": "MXN",
+      "isPopular": false,
+      "description": "La solución completa con todos los bonos y la guía avanzada de sustitución de ingredientes.",
+      "features": [
+        "Ebook digital 'Cocina Inteligente' (100 recetas)",
+        "Bono 1: Menú Planificado de 30 Días",
+        "Bono 2: Lista de Compras Inteligente",
+        "Bono 3: Guía de Sustituciones Anticrisis",
+        "Formato optimizado para impresión en casa",
+        "Garantía incondicional de 7 días"
+      ],
+      "checkoutUrl": "https://pay.hotmart.com/DEMO-COCINA-VIP?off=vip"
+    }
+  ],
+  "flows": {
+    "welcome_1": {
+      "id": "welcome_1",
+      "type": "message",
+      "content": "¡Hola! Qué gusto saludarte. Soy Valentina, asesora culinaria de **Cocina Inteligente** 🍳✨",
+      "next": "ask_name"
+    },
+    "ask_name": {
+      "id": "ask_name",
+      "type": "input",
+      "content": "Antes de comenzar, ¿cómo te llamas? Así podré dirigirme a ti de manera personalizada:",
+      "inputKey": "userName",
+      "placeholder": "Escribe tu nombre aquí...",
+      "inputType": "text",
+      "required": false,
+      "next": "greet_personalized"
+    },
+    "greet_personalized": {
+      "id": "greet_personalized",
+      "type": "message",
+      "content": "¡Mucho gusto, {{userName}}! Te doy una cálida bienvenida a nuestra comunidad de cocina familiar.",
+      "next": "valentina_voice_note"
+    },
+    "valentina_voice_note": {
+      "id": "valentina_voice_note",
+      "type": "audio",
+      "caption": "🎧 *Mensaje de voz de Valentina (14 seg):* 'Te cuento brevemente cómo este método nos ayudó a ahorrar más del 40% en comida cada mes...'",
+      "durationSeconds": 14,
+      "audioUrl": "",
+      "next": "problem_presentation"
+    },
+    "problem_presentation": {
+      "id": "problem_presentation",
+      "type": "message",
+      "content": "Sabemos que con el costo actual de los alimentos, la pregunta de cada día es la misma: *'¿Qué cocino hoy que rinda, sea nutritivo y no me cueste una fortuna?'* 🛒🇲🇽",
+      "next": "main_menu"
+    },
+    "main_menu": {
+      "id": "main_menu",
+      "type": "buttons",
+      "content": "¿Qué te gustaría explorar en este momento?",
+      "options": [
+        {
+          "label": "📖 Conocer el libro de 100 recetas",
+          "next": "show_product_intro"
+        },
+        {
+          "label": "🎁 Ver los bonos de regalo",
+          "next": "show_bonuses"
+        },
+        {
+          "label": "💰 Ver paquetes y precios",
+          "next": "show_offers"
+        },
+        {
+          "label": "📄 Descargar muestra gratis (5 recetas)",
+          "next": "show_sample_file"
+        },
+        {
+          "label": "❓ Tengo preguntas frecuentes",
+          "next": "show_faq"
+        }
+      ]
+    },
+    "show_product_intro": {
+      "id": "show_product_intro",
+      "type": "product",
+      "productId": "cocina-inteligente-ebook",
+      "content": "Aquí tienes los detalles del recetario digital diseñado para ayudarte a ahorrar hasta un 40% en tus compras semanales:",
+      "next": "product_image_node"
+    },
+    "product_image_node": {
+      "id": "product_image_node",
+      "type": "image",
+      "imageUrl": "assets/products/cocina-portada.svg",
+      "caption": "Ebook Digital 'Cocina Inteligente': 100 recetas pensadas para el hogar mexicano",
+      "next": "recipes_details"
+    },
+    "recipes_details": {
+      "id": "recipes_details",
+      "type": "message",
+      "content": "Cada una de las 100 recetas incluye:\n• Ingredientes sencillos disponibles en tienditas o recauderías.\n• Tiempo de preparación de 20 a 40 minutos.\n• Costo estimado por porción familiar.\n• Consejos para aprovechar sobrantes y evitar que los alimentos se echen a perder.",
+      "next": "video_teaser"
+    },
+    "video_teaser": {
+      "id": "video_teaser",
+      "type": "video",
+      "videoUrl": "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ",
+      "title": "Demostración en video: Cómo organizar tu menú semanal",
+      "caption": "Video demostrativo breve sobre la metodología de cocina inteligente.",
+      "next": "ask_after_product"
+    },
+    "ask_after_product": {
+      "id": "ask_after_product",
+      "type": "buttons",
+      "content": "¿Cómo prefieres continuar, {{userName}}?",
+      "options": [
+        {
+          "label": "🎁 Ver qué bonos incluye",
+          "next": "show_bonuses"
+        },
+        {
+          "label": "💰 Ir directo a los precios",
+          "next": "show_offers"
+        },
+        {
+          "label": "📄 Quiero ver la muestra gratis",
+          "next": "show_sample_file"
+        },
+        {
+          "label": "↩️ Volver al menú principal",
+          "next": "main_menu"
+        }
+      ]
+    },
+    "show_sample_file": {
+      "id": "show_sample_file",
+      "type": "file",
+      "title": "Muestra Gratuita: 5 Recetas Económicas",
+      "description": "Prueba hoy mismo estas 5 recetas seleccionadas: Tinga económica de nopales con pollo, Sopa campesina reconfortante, Tortitas de avena y verduras, Arroz a la jardinera rendidor y Agua fresca de pepino con limón.",
+      "fileUrl": "assets/products/muestra-5-recetas.svg",
+      "fileType": "PDF",
+      "fileSize": "1.2 MB",
+      "downloadLabel": "Descargar Muestra Gratuita",
+      "next": "after_sample_buttons"
+    },
+    "after_sample_buttons": {
+      "id": "after_sample_buttons",
+      "type": "buttons",
+      "content": "¿Qué te pareció la muestra? ¿Te gustaría conocer los paquetes para tener el libro completo?",
+      "options": [
+        {
+          "label": "✨ Sí, quiero ver los paquetes y precios",
+          "next": "show_offers"
+        },
+        {
+          "label": "🎁 Ver los bonos adicionales",
+          "next": "show_bonuses"
+        },
+        {
+          "label": "↩️ Volver al menú principal",
+          "next": "main_menu"
+        }
+      ]
+    },
+    "show_bonuses": {
+      "id": "show_bonuses",
+      "type": "message",
+      "content": "Para asegurarnos de que ahorres desde tu primera compra, preparamos 3 bonos exclusivos:",
+      "next": "bonus_delay"
+    },
+    "bonus_delay": {
+      "id": "bonus_delay",
+      "type": "delay",
+      "delayMs": 650,
+      "next": "bonus_list_message"
+    },
+    "bonus_list_message": {
+      "id": "bonus_list_message",
+      "type": "message",
+      "content": "📅 **Bono 1:** Menú Planificado de 30 Días (Valor habitual: $150 MXN - Gratis)\n\n🛒 **Bono 2:** Lista de Compras Inteligente para el mercado (Valor habitual: $100 MXN - Gratis)\n\n🔄 **Bono 3:** Guía de Sustituciones Anticrisis (Valor habitual: $120 MXN - Incluido en Paquete VIP)",
+      "next": "bonuses_buttons"
+    },
+    "bonuses_buttons": {
+      "id": "bonuses_buttons",
+      "type": "buttons",
+      "content": "¿Deseas ver las opciones de compra y sus precios transparentes?",
+      "options": [
+        {
+          "label": "💰 Ver paquetes disponibles",
+          "next": "show_offers"
+        },
+        {
+          "label": "📖 Más detalles de las recetas",
+          "next": "recipes_details"
+        },
+        {
+          "label": "↩️ Menú principal",
+          "next": "main_menu"
+        }
+      ]
+    },
+    "show_offers": {
+      "id": "show_offers",
+      "type": "offer",
+      "content": "Estos son nuestros paquetes con precios en Pesos Mexicanos (MXN). Elige el que mejor se adapte a tu hogar:",
+      "next": "choose_tier"
+    },
+    "choose_tier": {
+      "id": "choose_tier",
+      "type": "buttons",
+      "content": "¿Cuál de las opciones se adapta mejor a tu familia?",
+      "options": [
+        {
+          "label": "🌱 Paquete Esencial ($197 MXN)",
+          "next": "checkout_basico"
+        },
+        {
+          "label": "⭐ Paquete Completo Recomendado ($297 MXN)",
+          "next": "checkout_completo"
+        },
+        {
+          "label": "👑 Paquete VIP Familiar ($397 MXN)",
+          "next": "checkout_vip"
+        },
+        {
+          "label": "❓ Tengo una duda antes de comprar",
+          "next": "show_faq"
+        }
+      ]
+    },
+    "checkout_basico": {
+      "id": "checkout_basico",
+      "type": "checkout",
+      "offerId": "tier-basico",
+      "title": "Paquete Esencial — Cocina Inteligente",
+      "priceText": "$197 MXN",
+      "description": "Acceso inmediato al Ebook interactivo con las 100 recetas económicas.",
+      "checkoutUrl": "https://pay.hotmart.com/DEMO-COCINA-BASIC?off=basico&sck=chat_sales",
+      "buttonLabel": "Pagar $197 MXN de forma segura",
+      "guarantee": "🛡️ Garantía incondicional de 7 días. Si no te convence, te reembolsamos el 100%.",
+      "next": "after_checkout_guidance"
+    },
+    "checkout_completo": {
+      "id": "checkout_completo",
+      "type": "checkout",
+      "offerId": "tier-completo",
+      "title": "Paquete Completo Recomendado — Cocina Inteligente",
+      "priceText": "$297 MXN",
+      "badge": "Opción Más Elegida",
+      "description": "Ebook 100 recetas + Bono 1 (Menú 30 días) + Bono 2 (Lista de Compras) + Acceso vitalicio.",
+      "checkoutUrl": "https://pay.hotmart.com/DEMO-COCINA-PRO?off=completo&sck=chat_sales",
+      "buttonLabel": "Pagar $297 MXN con todos los bonos",
+      "guarantee": "🛡️ Garantía incondicional de 7 días. Pago protegido y procesado por Hotmart.",
+      "next": "after_checkout_guidance"
+    },
+    "checkout_vip": {
+      "id": "checkout_vip",
+      "type": "checkout",
+      "offerId": "tier-vip",
+      "title": "Paquete VIP Familiar — Cocina Inteligente",
+      "priceText": "$397 MXN",
+      "badge": "Paquete Definitivo",
+      "description": "Todo lo incluido en el Paquete Completo más el Bono 3 (Guía de Sustituciones Anticrisis) y formato imprimible.",
+      "checkoutUrl": "https://pay.hotmart.com/DEMO-COCINA-VIP?off=vip&sck=chat_sales",
+      "buttonLabel": "Obtener Paquete VIP por $397 MXN",
+      "guarantee": "🛡️ Garantía incondicional de 7 días. Soporte y acceso vitalicio.",
+      "next": "after_checkout_guidance"
+    },
+    "after_checkout_guidance": {
+      "id": "after_checkout_guidance",
+      "type": "buttons",
+      "content": "El checkout se abre en una pestaña segura de Hotmart. ¿Tienes alguna pregunta adicional?",
+      "options": [
+        {
+          "label": "🛡️ ¿Cómo funciona la garantía de 7 días?",
+          "next": "faq_garantia"
+        },
+        {
+          "label": "📱 ¿Cómo recibo el material?",
+          "next": "faq_entrega"
+        },
+        {
+          "label": "🔄 Ver otro paquete",
+          "next": "choose_tier"
+        },
+        {
+          "label": "👋 Todo claro, muchas gracias",
+          "next": "final_ending"
+        }
+      ]
+    },
+    "show_faq": {
+      "id": "show_faq",
+      "type": "buttons",
+      "content": "Aquí tienes las dudas más frecuentes de nuestras familias:",
+      "options": [
+        {
+          "label": "📱 ¿Cómo recibo el recetario?",
+          "next": "faq_entrega"
+        },
+        {
+          "label": "🛡️ ¿Qué garantía tengo?",
+          "next": "faq_garantia"
+        },
+        {
+          "label": "💳 ¿Qué formas de pago aceptan?",
+          "next": "faq_pagos"
+        },
+        {
+          "label": "🧑‍🍳 ¿Es apto para principiantes?",
+          "next": "faq_principiantes"
+        },
+        {
+          "label": "💰 Volver a los paquetes",
+          "next": "show_offers"
+        }
+      ]
+    },
+    "faq_entrega": {
+      "id": "faq_entrega",
+      "type": "message",
+      "content": "📬 **Entrega Inmediata:** En cuanto el pago se confirma, Hotmart te envía un correo electrónico con tu enlace de acceso personal. Podrás descargarlo en tu teléfono celular, tablet o computadora, o leerlo en línea sin esperas.",
+      "next": "faq_return_buttons"
+    },
+    "faq_garantia": {
+      "id": "faq_garantia",
+      "type": "message",
+      "content": "🛡️ **Garantía Total de 7 Días:** Queremos que pruebes las recetas con total tranquilidad. Si en los primeros 7 días sientes que no te ayuda a ahorrar ni a organizar tus comidas, solicitas el reembolso con un solo clic y te devolvemos el 100% de tu dinero.",
+      "next": "faq_return_buttons"
+    },
+    "faq_pagos": {
+      "id": "faq_pagos",
+      "type": "message",
+      "content": "💳 **Formas de Pago:** Puedes pagar con tarjeta de débito, crédito, OXXO en efectivo (México), PayPal y transferencias bancarias según tu país. Todo el proceso es 100% encriptado y seguro a través de Hotmart.",
+      "next": "faq_return_buttons"
+    },
+    "faq_principiantes": {
+      "id": "faq_principiantes",
+      "type": "message",
+      "content": "🧑‍🍳 **Totalmente para principiantes:** Todas las recetas tienen pasos numerados, tiempos claros y términos sencillos. No necesitas utensilios costosos ni técnicas profesionales de gastronomía.",
+      "next": "faq_return_buttons"
+    },
+    "faq_return_buttons": {
+      "id": "faq_return_buttons",
+      "type": "buttons",
+      "content": "¿Qué te gustaría hacer ahora?",
+      "options": [
+        {
+          "label": "💰 Ver paquetes y adquirirlo",
+          "next": "show_offers"
+        },
+        {
+          "label": "❓ Ver otra pregunta frecuente",
+          "next": "show_faq"
+        },
+        {
+          "label": "↩️ Menú principal",
+          "next": "main_menu"
+        }
+      ]
+    },
+    "final_ending": {
+      "id": "final_ending",
+      "type": "end",
+      "content": "¡Muchas gracias por conversar conmigo! Que disfrutes mucho preparando comidas deliciosas y ahorrativas para tu familia. Si deseas volver a empezar, puedes presionar el botón de reiniciar aquí abajo. ¡Buen provecho! 🥘",
+      "allowRestart": true
+    }
+  }
+}

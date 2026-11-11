@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Chat de Ventas — Cocina Inteligente</title>
+  <meta name="description" content="Plataforma de ventas conversacional interactiva para productos digitales.">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#2563EB">
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  
+  <!-- Stylesheets (Relative Paths) -->
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/chat.css">
+</head>
+<body>
+  <div class="chat-app-wrapper">
+    <main class="chat-container" role="region" aria-label="Chat de Atención y Ventas">
+      
+      <!-- Accessible live announcer for screen readers -->
+      <div id="chat-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+      <!-- Header Section - Facebook Messenger Style -->
+      <header class="chat-header">
+        <div class="header-left">
+          <button type="button" class="header-back-btn" id="header-back-btn" aria-label="Voltar" title="Voltar">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0084FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+          </button>
+          <div class="avatar-wrapper">
+            <img id="header-avatar" src="assets/images/avatar-cocina.svg" alt="Avatar" class="header-avatar-img">
+            <span class="status-indicator-dot" aria-hidden="true"></span>
+          </div>
+          <div class="header-info">
+            <div class="agent-name-title">
+              <span id="header-agent-name">Valentina</span>
+              <svg class="verified-badge-svg" viewBox="0 0 24 24" width="15" height="15" fill="#0084FF" title="Verificado Oficial">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15-5-5 1.41-1.41L11 14.17l7.59-7.59L20 8l-9 9z"/>
+              </svg>
+            </div>
+            <span id="header-agent-role" class="agent-subtitle">Página do Facebook • Ativo(a) agora</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div class="header-messenger-icon" title="Atendimento Oficial no Messenger">
+            <svg width="24" height="24" viewBox="0 0 24 24">
+              <defs>
+                <linearGradient id="msgGradHeader" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00C6FF"/>
+                  <stop offset="100%" stop-color="#0078FF"/>
+                </linearGradient>
+              </defs>
+              <path fill="url(#msgGradHeader)" d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.518 3.735 7.215V22l3.375-1.853c.915.253 1.884.39 2.89.39 5.523 0 10-4.145 10-9.279C22 6.145 17.523 2 12 2zm1.066 12.467l-2.618-2.793-5.111 2.793 5.623-5.969 2.682 2.793 5.047-2.793-5.623 5.969z"/>
+            </svg>
+          </div>
+        </div>
+      </header>
+
+      <!-- Messages Stream -->
+      <div id="chat-messages" class="chat-messages-stream" role="log" aria-live="polite" aria-relevant="additions">
+        <!-- Centered Profile Hero (Facebook / Instagram Extension Style) -->
+        <div class="chat-profile-hero" id="chat-profile-hero">
+          <div class="hero-avatar-wrapper">
+            <img id="hero-avatar-img" src="assets/images/avatar-cocina.svg" alt="Avatar" class="hero-avatar-img">
+            <span class="hero-status-dot" aria-hidden="true"></span>
+          </div>
+          <div class="hero-name-row">
+            <h2 id="hero-agent-name" class="hero-name">Valentina</h2>
+            <svg class="hero-verified-svg" viewBox="0 0 24 24" width="18" height="18" fill="#0084FF" title="Verificado Oficial">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15-5-5 1.41-1.41L11 14.17l7.59-7.59L20 8l-9 9z"/>
+            </svg>
+          </div>
+          <div id="hero-agent-role" class="hero-subtitle">Cocina Inteligente • Página do Facebook</div>
+          <div id="hero-agent-bio" class="hero-bio">Página Oficial • Atendimento e suporte comercial direto</div>
+          <div class="hero-meta-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#0084FF">
+              <path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.518 3.735 7.215V22l3.375-1.853c.915.253 1.884.39 2.89.39 5.523 0 10-4.145 10-9.279C22 6.145 17.523 2 12 2zm1.066 12.467l-2.618-2.793-5.111 2.793 5.623-5.969 2.682 2.793 5.047-2.793-5.623 5.969z"/>
+            </svg>
+            <span>Conversa oficial do Messenger</span>
+          </div>
+          <div class="hero-timestamp">
+            <span>HOJE</span>
+          </div>
+        </div>
+        <!-- Message bubbles and cards will be rendered dynamically by ChatEngine -->
+      </div>
+
+      <!-- Interaction Dock -->
+      <div id="chat-dock" class="chat-interaction-dock">
+        <!-- Text Input Form Row -->
+        <form id="chat-input-form" class="input-form-row" autocomplete="off">
+          <input 
+            type="text" 
+            id="chat-text-input" 
+            class="chat-text-input" 
+            placeholder="Escribe tu mensaje o selecciona una opción..." 
+            aria-label="Escribe tu mensaje o respuesta"
+          />
+          <button type="button" id="chat-mic-btn" class="btn-dock-mic" title="Grabar nota de voz" aria-label="Grabar nota de voz">
+            <svg class="mic-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+              <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+            </svg>
+          </button>
+          <button type="submit" id="chat-send-btn" class="btn-send-message" aria-label="Enviar mensaje">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+            </svg>
+          </button>
+        </form>
+
+        <!-- Audio Recording & Preview Dock Panel -->
+        <div id="chat-recording-panel" class="chat-recording-panel" style="display:none;" role="region" aria-label="Grabación de nota de voz">
+          <div class="recording-indicator-box">
+            <span class="recording-pulse-dot" id="recording-pulse-dot" aria-hidden="true"></span>
+            <span class="recording-timer" id="recording-timer" aria-live="polite">0:00 / 1:00</span>
+          </div>
+
+          <div class="recording-actions-box" id="recording-live-actions">
+            <button type="button" id="btn-pause-record" class="btn-record-action" title="Pausar grabación" aria-label="Pausar grabación">
+              ⏸️
+            </button>
+            <button type="button" id="btn-stop-record" class="btn-record-action btn-record-stop" title="Finalizar grabación" aria-label="Finalizar grabación">
+              ⏹️ Parar
+            </button>
+            <button type="button" id="btn-discard-record" class="btn-record-action btn-record-discard" title="Descartar grabación" aria-label="Descartar grabación">
+              🗑️
+            </button>
+          </div>
+
+          <!-- Preview & Send bar (after stopping) -->
+          <div id="recording-preview-box" class="recording-preview-box" style="display:none;">
+            <button type="button" id="btn-play-preview" class="btn-record-action" title="Escuchar previa" aria-label="Escuchar previa">
+              ▶️ Escuchar
+            </button>
+            <span id="preview-duration-text" class="preview-duration-text">0:00</span>
+            <button type="button" id="btn-discard-preview" class="btn-record-action btn-record-discard" title="Descartar" aria-label="Descartar">
+              🗑️
+            </button>
+            <button type="button" id="btn-send-voice" class="btn-send-voice" aria-label="Enviar nota de voz">
+              Enviar Nota ➔
+            </button>
+          </div>
+        </div>
+
+        <div class="dock-footer-notice" id="dock-footer-notice">
+          Atendimento Oficial no Messenger • Pagos protegidos vía Hotmart
+        </div>
+      </div>
+
+      <!-- Microphone Permission & Privacy Notice Modal -->
+      <div id="mic-permission-modal" class="chat-modal-backdrop" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="mic-modal-title">
+        <div class="chat-modal-box">
+          <div class="chat-modal-header">
+            <h3 id="mic-modal-title" class="chat-modal-title">🎤 Grabar Nota de Voz</h3>
+            <button type="button" id="btn-close-mic-modal" class="chat-modal-close" aria-label="Cerrar ventana">&times;</button>
+          </div>
+          <div class="chat-modal-body">
+            <p>Para enviar una nota de voz o duda rápida, necesitamos acceso al micrófono de tu dispositivo.</p>
+            <div class="privacy-callout">
+              <strong>🔒 Privacidad garantizada:</strong> Tu audio se procesa única y exclusivamente de forma local en tu navegador. No se envía a servidores externos sin configuración explícita.
+            </div>
+            <p style="font-size:12px; color:var(--neutral-500); margin-top:10px;">Duración máxima por nota: 60 segundos.</p>
+          </div>
+          <div class="chat-modal-footer">
+            <button type="button" id="btn-cancel-mic-modal" class="btn-modal-secondary">Cancelar</button>
+            <button type="button" id="btn-confirm-mic-modal" class="btn-modal-primary">Permitir y Comenzar</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Application Bootstrap -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

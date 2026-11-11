@@ -1,0 +1,107 @@
+{
+  "products": [
+    {
+      "id": "cocina-inteligente",
+      "name": "Cocina Inteligente",
+      "subtitle": "100 comidas económicas para toda la familia",
+      "category": "Ebook Digital & Recetario Práctico",
+      "description": "El recetario definitivo pensado para familias que desean comer rico, balanceado y variado sin gastar una fortuna en el mercado.",
+      "coverImage": "assets/products/cocina-portada.svg",
+      "currency": "MXN",
+      "currencySymbol": "$",
+      "format": "Descarga Digital Inmediata (PDF de alta resolución)",
+      "highlights": [
+        "100 recetas completas con ingredientes económicos y fáciles de conseguir en México y Latinoamérica",
+        "Costos promedio calculados por porción familiar (4 a 6 personas)",
+        "Tiempos de preparación de 20 a 40 minutos",
+        "Secciones para desayunos, sopas, platos fuertes con pollo, carne, verduras y cenas ligeras",
+        "Apto para principiantes y cocineros ocupados"
+      ],
+      "sampleFile": {
+        "title": "Muestra Gratuita: 5 Recetas Económicas",
+        "description": "Descarga y prueba hoy mismo 5 de las recetas más populares del libro sin costo.",
+        "url": "assets/products/muestra-5-recetas.svg",
+        "badge": "PDF Gratis"
+      },
+      "bonuses": [
+        {
+          "id": "bono-menu-30",
+          "title": "Bono 1: Menú Planificado de 30 Días",
+          "value": "$150 MXN (Incluido Gratis)",
+          "description": "Calendario mensual organizado semana a semana para no volver a preguntarte '¿qué comemos hoy?'.",
+          "image": "assets/products/menu-30-dias.svg"
+        },
+        {
+          "id": "bono-lista-compras",
+          "title": "Bono 2: Lista de Compras Inteligente",
+          "value": "$100 MXN (Incluido Gratis)",
+          "description": "Plantilla para ir al súper o mercado con cantidades exactas y evitar desperdiciar comida.",
+          "image": "assets/products/lista-compras.svg"
+        },
+        {
+          "id": "bono-sustituciones",
+          "title": "Bono 3: Guía de Sustituciones Anticrisis",
+          "value": "$120 MXN (Incluido Gratis)",
+          "description": "Aprende a sustituir ingredientes caros por alternativas accesibles sin perder sabor ni nutrientes.",
+          "image": "assets/products/guia-sustitutos.svg"
+        }
+      ],
+      "tiers": [
+        {
+          "id": "tier-basico",
+          "name": "Paquete Esencial",
+          "badge": "Inicio Rápido",
+          "price": 197,
+          "originalPrice": 197,
+          "currency": "MXN",
+          "isPopular": false,
+          "description": "Ideal si solo buscas ideas frescas y económicas para tu cocina diaria.",
+          "features": [
+            "Ebook digital 'Cocina Inteligente' con 100 recetas",
+            "Formato PDF interactivo para celular, tablet o PC",
+            "Acceso inmediato y de por vida",
+            "Garantía de satisfacción por 7 días"
+          ],
+          "checkoutUrl": "https://pay.hotmart.com/DEMO-COCINA-BASIC?off=basico&sck=chat_sales"
+        },
+        {
+          "id": "tier-completo",
+          "name": "Paquete Completo Recomendado",
+          "badge": "Más Elegido",
+          "price": 297,
+          "originalPrice": 297,
+          "currency": "MXN",
+          "isPopular": true,
+          "description": "El paquete integral con todas las herramientas de planificación para el máximo ahorro.",
+          "features": [
+            "Ebook digital 'Cocina Inteligente' con 100 recetas",
+            "Bono 1: Menú Planificado de 30 Días (PDF imprimible)",
+            "Bono 2: Lista de Compras Inteligente",
+            "Acceso ilimitado a futuras actualizaciones",
+            "Garantía incondicional de 7 días"
+          ],
+          "checkoutUrl": "https://pay.hotmart.com/DEMO-COCINA-PRO?off=completo&sck=chat_sales"
+        },
+        {
+          "id": "tier-vip",
+          "name": "Paquete VIP Familiar",
+          "badge": "Mayor Ahorro",
+          "price": 397,
+          "originalPrice": 397,
+          "currency": "MXN",
+          "isPopular": false,
+          "description": "La solución completa con todos los bonos y la guía avanzada de sustitución de ingredientes.",
+          "features": [
+            "Ebook digital 'Cocina Inteligente' (100 recetas)",
+            "Bono 1: Menú Planificado de 30 Días",
+            "Bono 2: Lista de Compras Inteligente",
+            "Bono 3: Guía de Sustituciones Anticrisis",
+            "Formato optimizado para impresión en casa",
+            "Garantía incondicional de 7 días"
+          ],
+          "checkoutUrl": "https://pay.hotmart.com/DEMO-COCINA-VIP?off=vip&sck=chat_sales"
+        }
+      ]
+    }
+  ]
+}

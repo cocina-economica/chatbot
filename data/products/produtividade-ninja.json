@@ -1,0 +1,264 @@
+{
+  "id": "prod_produtividade_ninja",
+  "slug": "produtividade-ninja",
+  "name": "Produtividade Ninja",
+  "description": "Método definitivo de gestão de tempo e foco para profissionais",
+  "language": "pt-BR",
+  "currency": "BRL",
+  "currencySymbol": "R$",
+  "timezone": "America/Sao_Paulo",
+  "active": true,
+  "branding": {
+    "name": "Produtividade Ninja",
+    "tagline": "Dobre sua produtividade trabalhando menos horas",
+    "logo": "assets/images/logo.svg"
+  },
+  "theme": {
+    "primaryColor": "#0084FF",
+    "primaryHover": "#0073E6",
+    "secondaryColor": "#0084FF",
+    "accentColor": "#00C6FF",
+    "bgBody": "#F0F2F5",
+    "bgChat": "#FFFFFF",
+    "botBubbleBg": "#E4E6EB",
+    "botBubbleText": "#050505",
+    "userBubbleBg": "#0084FF",
+    "userBubbleText": "#FFFFFF",
+    "headerBg": "#FFFFFF",
+    "headerText": "#050505",
+    "fontFamily": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+    "borderRadius": "18px"
+  },
+  "avatar": {
+    "name": "Lucas",
+    "role": "Página Oficial • Ativo(a) agora",
+    "status": "Online no Messenger",
+    "image": "assets/images/avatar-ninja.svg",
+    "description": "Página do Produtividade Ninja • Foco e alta performance diária"
+  },
+  "welcome_message": "Olá! Seja muito bem-vindo/a ao método **Produtividade Ninja** ⚡🎯",
+  "flow_entry": "ninja_welcome",
+  "settings": {
+    "enableTypingIndicator": true,
+    "defaultTypingDelayMs": 600,
+    "allowFreeTextInput": true,
+    "persistHistory": true,
+    "showRestartButton": true,
+    "fallbackResponse": "Entendi perfeitamente. Para te guiar com mais precisão, selecione uma das opções abaixo:"
+  },
+  "checkout": {
+    "adapter": "hotmart",
+    "defaultTrackingParam": "sck",
+    "defaultTrackingValue": "chat_sales_pt",
+    "openInNewTab": true
+  },
+  "products": [
+    {
+      "id": "ninja-curso-ebook",
+      "name": "Método Produtividade Ninja",
+      "format": "Treinamento em Vídeo + Playbook em PDF",
+      "coverImage": "assets/products/ninja-portada.svg",
+      "description": "Um sistema passo a passo para organizar sua semana, bater metas e ter mais tempo livre.",
+      "highlights": [
+        "Metodologia dos 3 Blocos de Foco diários",
+        "Templates prontos para Notion e Trello",
+        "Rotina matinal sem ansiedade de celular",
+        "Técnica antiprocrastinação em 5 minutos"
+      ]
+    }
+  ],
+  "bonuses": [
+    {
+      "id": "bono-notion",
+      "title": "Bônus 1: Template Supremo no Notion",
+      "valueText": "R$ 97,00 (Grátis)",
+      "description": "Dashboard completo pronto para duplicar e usar em 2 minutos."
+    },
+    {
+      "id": "bono-rotina",
+      "title": "Bônus 2: Guia de Rotinas Noturnas de Alta Recuperação",
+      "valueText": "R$ 67,00 (Grátis)",
+      "description": "Durma melhor e acorde com energia renovada sem despertador repetido."
+    }
+  ],
+  "offers": [
+    {
+      "id": "tier-ninja-essencial",
+      "name": "Plano Essencial",
+      "badge": "Acesso Básico",
+      "price": 97,
+      "originalPrice": 97,
+      "currency": "BRL",
+      "isPopular": false,
+      "description": "Acesso ao Playbook Digital completo em PDF interactivo.",
+      "features": [
+        "Playbook Produtividade Ninja (180 páginas)",
+        "Acesso vitalício",
+        "Garantia incondicional de 7 dias"
+      ],
+      "checkoutUrl": "https://pay.hotmart.com/DEMO-NINJA-BASIC?off=essencial"
+    },
+    {
+      "id": "tier-ninja-pro",
+      "name": "Plano Completo Ninja PRO",
+      "badge": "Mais Recomendado",
+      "price": 197,
+      "originalPrice": 197,
+      "currency": "BRL",
+      "isPopular": true,
+      "description": "Treinamento em vídeo + Playbook + Template Notion + Todos os Bônus.",
+      "features": [
+        "Todas as vídeo-aulas práticas (4h de conteúdo direto ao ponto)",
+        "Playbook completo e exercícios",
+        "Template Supremo no Notion",
+        "Bônus de Rotinas Noturnas",
+        "Certificado e garantia total de 7 dias"
+      ],
+      "checkoutUrl": "https://pay.hotmart.com/DEMO-NINJA-PRO?off=completo"
+    }
+  ],
+  "flows": {
+    "ninja_welcome": {
+      "id": "ninja_welcome",
+      "type": "message",
+      "content": "Olá! Seja muito bem-vindo/a ao **Produtividade Ninja** ⚡🎯 Sou o Lucas, seu mentor nesta jornada.",
+      "next": "ask_user_name_ninja"
+    },
+    "ask_user_name_ninja": {
+      "id": "ask_user_name_ninja",
+      "type": "input",
+      "content": "Como posso te chamar?",
+      "inputKey": "userName",
+      "placeholder": "Digite seu primeiro nome...",
+      "next": "ninja_intro"
+    },
+    "ninja_intro": {
+      "id": "ninja_intro",
+      "type": "message",
+      "content": "Prazer, {{userName}}! Você já sentiu que o dia terminou e você trabalhou sem parar, mas suas tarefas prioritárias continuaram acumuladas?",
+      "next": "ninja_audio_mentor"
+    },
+    "ninja_audio_mentor": {
+      "id": "ninja_audio_mentor",
+      "type": "audio",
+      "src": "",
+      "caption": "🎧 *Mensagem de voz do Lucas (18 seg):* 'Vou te contar em menos de 20 segundos por que 90% das pessoas falham ao tentar organizar o tempo usando listas tradicionais...'",
+      "durationSeconds": 18,
+      "audioUrl": "",
+      "next": "ninja_menu"
+    },
+    "ninja_menu": {
+      "id": "ninja_menu",
+      "type": "buttons",
+      "content": "Como posso te ajudar hoje?",
+      "options": [
+        {
+          "label": "🎯 Conhecer o método Produtividade Ninja",
+          "next": "ninja_details"
+        },
+        {
+          "label": "🎁 Ver os bônus inclusos",
+          "next": "ninja_bonuses"
+        },
+        {
+          "label": "💰 Ver planos e valores",
+          "next": "ninja_offers"
+        }
+      ]
+    },
+    "ninja_details": {
+      "id": "ninja_details",
+      "type": "message",
+      "content": "O método é baseado no sistema de **3 Blocos de Foco diários**:\n\n1. Bloco de Ouro (90 min) focado na sua tarefa mais importante.\n2. Bloco Operacional (45 min) para e-mails e reuniões rápidas.\n3. Bloco de Fechamento (30 min) para planejar o dia seguinte com tranquilidade.",
+      "next": "ninja_details_buttons"
+    },
+    "ninja_details_buttons": {
+      "id": "ninja_details_buttons",
+      "type": "buttons",
+      "content": "O que gostaria de ver a seguir?",
+      "options": [
+        {
+          "label": "🎁 Ver os bônus",
+          "next": "ninja_bonuses"
+        },
+        {
+          "label": "💰 Conhecer os planos",
+          "next": "ninja_offers"
+        }
+      ]
+    },
+    "ninja_bonuses": {
+      "id": "ninja_bonuses",
+      "type": "message",
+      "content": "Ao adquirir o **Plano Completo PRO**, você recebe gratuitamente:\n\n⚡ **Bônus 1:** Template Supremo no Notion pronto para duplicar.\n🌙 **Bônus 2:** Guia de Rotinas Noturnas de Alta Recuperação.",
+      "next": "ninja_after_bonuses"
+    },
+    "ninja_after_bonuses": {
+      "id": "ninja_after_bonuses",
+      "type": "buttons",
+      "content": "Deseja ver a tabela de planos?",
+      "options": [
+        {
+          "label": "💰 Ver planos disponíveis",
+          "next": "ninja_offers"
+        },
+        {
+          "label": "↩️ Menu inicial",
+          "next": "ninja_menu"
+        }
+      ]
+    },
+    "ninja_offers": {
+      "id": "ninja_offers",
+      "type": "offer",
+      "content": "Confira nossos planos especiais em Reais (BRL):",
+      "next": "ninja_choose_tier"
+    },
+    "ninja_choose_tier": {
+      "id": "ninja_choose_tier",
+      "type": "buttons",
+      "content": "Qual plano melhor atende seu momento atual?",
+      "options": [
+        {
+          "label": "📘 Plano Essencial (R$ 97,00)",
+          "next": "ninja_checkout_essencial"
+        },
+        {
+          "label": "🚀 Plano PRO Completo (R$ 197,00)",
+          "next": "ninja_checkout_pro"
+        }
+      ]
+    },
+    "ninja_checkout_essencial": {
+      "id": "ninja_checkout_essencial",
+      "type": "checkout",
+      "offerId": "tier-ninja-essencial",
+      "title": "Plano Essencial — Produtividade Ninja",
+      "priceText": "R$ 97,00",
+      "description": "Playbook digital completo em PDF interativo.",
+      "checkoutUrl": "https://pay.hotmart.com/DEMO-NINJA-BASIC?off=essencial&sck=chat_sales_pt",
+      "buttonLabel": "Garantir por R$ 97,00",
+      "guarantee": "🛡️ Garantia incondicional de 7 dias via Hotmart.",
+      "next": "ninja_end"
+    },
+    "ninja_checkout_pro": {
+      "id": "ninja_checkout_pro",
+      "type": "checkout",
+      "offerId": "tier-ninja-pro",
+      "title": "Plano PRO Completo — Produtividade Ninja",
+      "priceText": "R$ 197,00",
+      "badge": "Mais Recomendado",
+      "description": "Vídeo-aulas + Playbook + Template Notion + Bônus Noturno.",
+      "checkoutUrl": "https://pay.hotmart.com/DEMO-NINJA-PRO?off=completo&sck=chat_sales_pt",
+      "buttonLabel": "Acessar o PRO por R$ 197,00",
+      "guarantee": "🛡️ Garantia incondicional de 7 dias. Pagamento 100% seguro.",
+      "next": "ninja_end"
+    },
+    "ninja_end": {
+      "id": "ninja_end",
+      "type": "end",
+      "content": "Muito obrigado por conversar conosco! Se precisar de algo, estarei à disposição. Tenha uma semana incrivelmente produtiva! ⚡",
+      "allowRestart": true
+    }
+  }
+}

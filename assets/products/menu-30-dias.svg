@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" width="300" height="200">
+  <defs>
+    <linearGradient id="menuGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#15803D" />
+      <stop offset="100%" stop-color="#166534" />
+    </linearGradient>
+  </defs>
+  <rect x="10" y="10" width="280" height="180" rx="12" fill="url(#menuGrad)" />
+  <rect x="25" y="25" width="250" height="32" rx="6" fill="#FFFFFF" fill-opacity="0.15" />
+  <text x="150" y="46" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="14" fill="#FFFFFF" text-anchor="middle">CALENDARIO MENSUAL</text>
+  
+  <!-- Mini calendar grid -->
+  <g fill="#FFFFFF" fill-opacity="0.9" font-family="system-ui, sans-serif" font-size="11" font-weight="600" text-anchor="middle">
+    <rect x="35" y="75" width="40" height="30" rx="4" fill="#FFFFFF" fill-opacity="0.2" />
+    <text x="55" y="94">SEM 1</text>
+    <rect x="95" y="75" width="40" height="30" rx="4" fill="#FFFFFF" fill-opacity="0.2" />
+    <text x="115" y="94">SEM 2</text>
+    <rect x="155" y="75" width="40" height="30" rx="4" fill="#FFFFFF" fill-opacity="0.2" />
+    <text x="175" y="94">SEM 3</text>
+    <rect x="215" y="75" width="40" height="30" rx="4" fill="#FFFFFF" fill-opacity="0.2" />
+    <text x="235" y="94">SEM 4</text>
+  </g>
+  <text x="150" y="145" font-family="system-ui, sans-serif" font-weight="700" font-size="15" fill="#FEF08A" text-anchor="middle">MENÚ COMPLETO 30 DÍAS</text>
+  <text x="150" y="165" font-family="system-ui, sans-serif" font-size="11" fill="#DCFCE7" text-anchor="middle">Desayunos • Comidas • Cenas balanceadas</text>
+</svg>

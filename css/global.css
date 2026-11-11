@@ -1,0 +1,105 @@
+/**
+ * Universal Sales Chat Engine - Global Design System Tokens & Base Styles
+ */
+
+:root {
+  /* Dynamic Theme Variables - Official Facebook / Messenger Palette */
+  --color-primary: #0084FF;
+  --color-primary-hover: #0073E6;
+  --color-secondary: #0084FF;
+  --color-accent: #00C6FF;
+  --color-bg-body: #F0F2F5;
+  --color-bg-chat: #FFFFFF;
+  --color-bot-bubble-bg: #E4E6EB;
+  --color-bot-bubble-text: #050505;
+  --color-user-bubble-bg: #0084FF;
+  --color-user-bubble-text: #FFFFFF;
+  --border-radius-base: 18px;
+
+  /* Facebook / Meta Neutral Palette */
+  --neutral-50: #FFFFFF;
+  --neutral-100: #F0F2F5;
+  --neutral-200: #E4E6EB;
+  --neutral-300: #CED0D4;
+  --neutral-400: #8A8D91;
+  --neutral-500: #65676B;
+  --neutral-600: #4B4C4F;
+  --neutral-700: #3A3B3C;
+  --neutral-800: #242526;
+  --neutral-900: #050505;
+
+  /* Typography */
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-float: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+}
+
+/* CSS Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-body);
+  color: var(--neutral-800);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 240ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
