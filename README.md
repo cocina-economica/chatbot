@@ -200,3 +200,4 @@ A aplicação foi rigorosamente construída com **caminhos relativos** e **zero 
 
 ## 📄 Licença
 Código aberto, modular e livre para uso comercial e adaptações.
+# chatbot
