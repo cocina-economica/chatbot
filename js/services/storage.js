@@ -24,8 +24,9 @@ export class StorageService {
   _safeGet(key, fallback = null) {
     try {
       const item = localStorage.getItem(this._getKey(key));
-      if (!item) return fallback;
-      return JSON.parse(item);
+      if (item === null || item === undefined) return fallback;
+      const parsed = JSON.parse(item);
+      return parsed;
     } catch (e) {
       console.warn(`[StorageService] Failed to get ${key}:`, e);
       return fallback;
@@ -47,6 +48,7 @@ export class StorageService {
       localStorage.removeItem(this._getKey(key));
       return true;
     } catch (e) {
+      console.error(`[StorageService] Failed to remove ${key}:`, e);
       return false;
     }
   }
@@ -80,22 +82,30 @@ export class StorageService {
   // --- Product Configurations ---
 
   saveCustomProduct(productConfig) {
-    const slug = productConfig.slug;
-    if (!slug) return false;
-
-    // Save product data
-    const key = `product_data_${slug}`;
-    const success = this._safeSet(key, productConfig);
-
-    if (success) {
-      // Update registered slugs list
-      const customList = this.listCustomProductSlugs();
-      if (!customList.includes(slug)) {
-        customList.push(slug);
-        this._safeSet('custom_product_slugs', customList);
-      }
+    const config = deepClone(productConfig || {});
+    const slug = typeof config.slug === 'string' ? config.slug.trim() : '';
+    if (!slug) {
+      console.warn('[StorageService] saveCustomProduct aborted: missing slug.');
+      return false;
     }
-    return success;
+
+    const validation = validateProductConfig(config);
+    if (!validation.valid) {
+      console.warn('[StorageService] saveCustomProduct aborted due to validation errors:', validation.errors);
+      return false;
+    }
+
+    const key = `product_data_${slug}`;
+    const saved = this._safeSet(key, config);
+    if (!saved) return false;
+
+    const customList = this.listCustomProductSlugs();
+    if (!customList.includes(slug)) {
+      customList.push(slug);
+      this._safeSet('custom_product_slugs', customList);
+    }
+
+    return true;
   }
 
   loadCustomProduct(slug) {
@@ -109,7 +119,8 @@ export class StorageService {
   }
 
   listCustomProductSlugs() {
-    return this._safeGet('custom_product_slugs', []);
+    const value = this._safeGet('custom_product_slugs', []);
+    return Array.isArray(value) ? value : [];
   }
 
   // --- Backup, Export & Import ---
@@ -126,7 +137,12 @@ export class StorageService {
       for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
         if (key && key.startsWith(STORAGE_PREFIX)) {
-          backup.products[key] = JSON.parse(localStorage.getItem(key));
+          const rawValue = localStorage.getItem(key);
+          try {
+            backup.products[key] = rawValue ? JSON.parse(rawValue) : rawValue;
+          } catch (e) {
+            backup.products[key] = rawValue;
+          }
         }
       }
     } catch (e) {
@@ -147,7 +163,6 @@ export class StorageService {
         let importedCount = 0;
         for (const [key, value] of Object.entries(data.products)) {
           if (typeof key === 'string' && key.startsWith(STORAGE_PREFIX)) {
-            // Validate product config integrity if key stores product data
             if (key.includes('product_data_') && value && typeof value === 'object') {
               const check = validateProductConfig(value);
               if (!check.valid) {
@@ -162,7 +177,6 @@ export class StorageService {
         return { success: true, count: importedCount };
       }
 
-      // Check if it's a single product JSON export
       if (data.slug && data.flows) {
         const check = validateProductConfig(data);
         if (!check.valid) {
